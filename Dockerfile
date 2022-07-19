@@ -1,15 +1,12 @@
-FROM node:alpine
+FROM node:lts-alpine
 
-RUN mkdir -p /usr/src/node-app && chown -R node:node /usr/src/node-app
+WORKDIR /usr/src/app
 
-WORKDIR /usr/src/node-app
+COPY package*.json ./
+COPY yarn.lock ./
 
-COPY package.json yarn.lock ./
+RUN yarn install --ignore-scripts
 
-USER node
+COPY . .
 
-RUN yarn install --pure-lockfile
-
-COPY --chown=node:node . .
-
-EXPOSE 3000
+CMD [ "node", "--trace-warnings","src/index.js" ]
