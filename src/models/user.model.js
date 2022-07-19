@@ -44,6 +44,40 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
+    bookedAdditionalServices: [
+      {
+        bookedAdditionalService: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'AdditinoalService',
+        },
+        bookingDate: {
+          type: Date,
+          required: true,
+        },
+      },
+    ],
+
+    balance: {
+      type: String,
+      default: 0,
+      trim: true,
+      validate(value) {
+        if (
+          !validator.isCurrency(value, {
+            allow_negatives: true,
+            require_symbol: false,
+            allow_decimal: true,
+            require_decimal: false,
+            digits_after_decimal: [2],
+            thousands_separator: ',',
+            decimal_separator: '.',
+          })
+        ) {
+          throw new Error(`Invalid balance: ${value}`);
+        }
+      },
+    },
   },
   {
     timestamps: true,
