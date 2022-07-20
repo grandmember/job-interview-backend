@@ -16,6 +16,12 @@ Or with Docker Compose:
 docker compose -f docker-compose.dev.yml up -d --build
 ```
 
+## Docker Image:
+
+```bash
+docker pull ghcr.io/grandmember/job-interview-backend:amd64
+```
+
 ## License
 
 [MIT](LICENSE)
