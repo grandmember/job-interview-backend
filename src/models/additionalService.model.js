@@ -8,7 +8,7 @@ const additionalServiceSchemaOptions = {
 };
 
 const imageSchema = mongoose.Schema({
-  url: {
+  imageUrl: {
     type: String,
     required: true,
     validate(value) {
@@ -17,7 +17,7 @@ const imageSchema = mongoose.Schema({
       }
     },
   },
-  name: { type: String, required: true },
+  imageName: { type: String, required: true },
 });
 
 imageSchema.plugin(toJSON);
@@ -45,7 +45,7 @@ const additionalServiceSchema = mongoose.Schema(
             allow_negatives: false,
             require_symbol: false,
             allow_decimal: true,
-            require_decimal: false,
+            require_decimal: true,
             digits_after_decimal: [2],
             thousands_separator: ',',
             decimal_separator: '.',

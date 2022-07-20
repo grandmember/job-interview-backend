@@ -62,8 +62,8 @@ const addImageToAdditionalService = async (additionalServiceId, imageUrl, imageN
   }
 
   additionalService.images.push({
-    url: imageUrl,
-    name: imageName,
+    imageUrl,
+    imageName,
   });
 
   await additionalService.save();
@@ -125,10 +125,10 @@ const bookAdditionalService = async (additionalServiceId, userId, bookingDate) =
   }
 
   user.bookedAdditionalServices.push({
-    additionalServiceId,
+    bookedAdditionalService: additionalServiceId,
     bookingDate,
   });
-  // user.balance -= additionalService.price;
+
   user.balance = (user.balance - additionalService.price).toFixed(2);
   await user.save();
 

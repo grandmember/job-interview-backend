@@ -4,6 +4,19 @@ const bcrypt = require('bcryptjs');
 const { toJSON, paginate } = require('./plugins');
 const { roles } = require('../config/roles');
 
+const bookedAdditionalServiceSchema = mongoose.Schema({
+  bookedAdditionalService: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'AdditinoalService',
+  },
+  bookingDate: {
+    type: Date,
+    required: true,
+  },
+});
+
+bookedAdditionalServiceSchema.plugin(toJSON);
+
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -45,22 +58,11 @@ const userSchema = mongoose.Schema(
       default: false,
     },
 
-    bookedAdditionalServices: [
-      {
-        bookedAdditionalService: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'AdditinoalService',
-        },
-        bookingDate: {
-          type: Date,
-          required: true,
-        },
-      },
-    ],
+    bookedAdditionalServices: [bookedAdditionalServiceSchema],
 
     balance: {
       type: String,
-      default: 0,
+      default: '0.00',
       trim: true,
       validate(value) {
         if (
@@ -68,7 +70,7 @@ const userSchema = mongoose.Schema(
             allow_negatives: true,
             require_symbol: false,
             allow_decimal: true,
-            require_decimal: false,
+            require_decimal: true,
             digits_after_decimal: [2],
             thousands_separator: ',',
             decimal_separator: '.',

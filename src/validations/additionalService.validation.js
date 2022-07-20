@@ -19,7 +19,7 @@ const createAdditionalService = {
 const getAdditionalServices = {
   query: Joi.object().keys({
     name: Joi.string(),
-    price: Joi.number(),
+    price: Joi.string(),
     isAvailable: Joi.boolean(),
 
     sortBy: Joi.string(),
@@ -41,7 +41,7 @@ const updateAdditionalService = {
   body: Joi.object().keys({
     name: Joi.string(),
     description: Joi.string(),
-    price: Joi.number(),
+    price: Joi.string(),
     isAvailable: Joi.boolean(),
   }),
 };
