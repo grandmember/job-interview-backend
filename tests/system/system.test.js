@@ -6,8 +6,6 @@ const config = require('../../src/config/config');
 const setupTestDB = require('../utils/setupTestDB');
 const createDefaultAdmin = require('../../src/utils/createDefaultAdmin');
 
-// const { User, AdditionalService } = require('../../src/models');
-
 (async () => {
   await setupTestDB();
 })();
@@ -214,7 +212,6 @@ describe('System test', function () {
     expect(deleteResponse.body).toEqual({});
   });
 
-  // get all images of additional service
   test('ADMIN: should get all images of additional service', async () => {
     const response = await request(app)
       .get(`/v1/additional-services/${testSuiteState.additionalService.id}/images`)
@@ -228,7 +225,6 @@ describe('System test', function () {
     expect(response.body[0].imageName).toBe('test image');
   });
 
-  // register user
   test('CUSTOMER: should register', async () => {
     const response = await request(app).post('/v1/auth/register').send({
       email: 'test.customer1@example.com',
@@ -330,7 +326,6 @@ describe('System test', function () {
     expect(response.body.isEmailVerified).toBe(testSuiteState.customer1.isEmailVerified);
   });
 
-  // Test GET /
   test('ADMIN: should get all registered users', async () => {
     const response = await request(app)
       .get('/v1/users')
@@ -411,7 +406,6 @@ describe('System test', function () {
     expect(response.body).toEqual({});
   });
 
-  // book an additional service with an user account
   test('CUSTOMER: should book an additional service', async () => {
     const response = await request(app)
       .post(`/v1/additional-services/${testSuiteState.additionalService.id}/book`)
