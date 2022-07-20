@@ -16,11 +16,15 @@ Or with Docker Compose:
 docker compose -f docker-compose.dev.yml up -d --build
 ```
 
-## Docker Image:
+## Docker Image
 
 ```bash
 docker pull ghcr.io/grandmember/job-interview-backend:amd64
 ```
+
+## API Docs
+
+You can import the Insomnia file in the repository and you can also check validation files for required parameters etc. .
 
 ## License
 
