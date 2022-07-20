@@ -4,9 +4,10 @@ services:
   job-interview-backend-dev:
     build: .
     container_name: job-interview-backend-dev
+    # image: ghcr.io/grandmember/job-interview-backend:amd64
     restart: 'no'
     ports:
-      - "13001:3001"
+      - "3001:3001"
     networks:
       - default
     environment:
