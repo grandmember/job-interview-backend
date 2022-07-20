@@ -1,6 +1,6 @@
 # RESTful API Example with Node.js and Express.js
 
-## This project is templated from a  [boilerplate](https://github.com/hagopj13/node-express-boilerplate).
+## This project is templated from a  [boilerplate](https://github.com/hagopj13/node-express-boilerplate)
 
 ## Quick Start
 
